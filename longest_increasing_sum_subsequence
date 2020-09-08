@@ -1,0 +1,47 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int findLis(vector<int> &arr){
+    int size = arr.size();
+    vector<int> dp;
+    dp.reserve(size);
+    for(int i=0; i<size; ++i) {
+        dp[i] = arr[i];
+    }
+    int max=0;
+    for(int i=1; i<size; ++i) {
+        for(int j=0; j<i; ++j) {
+            if(arr[j] < arr[i]) {
+                dp[i] = std::max(dp[i], dp[j]+arr[i]);
+            }
+        }
+    }
+    for(int i=0; i<size; ++i) {
+        if(max < dp[i]) {
+            max = dp[i];
+        }
+    }
+    dp.clear();
+    return max;
+}
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	while(t--) {
+	    int n;
+	    cin>>n;
+	    vector<int> arr;
+	    arr.reserve(n);
+	    while(n--) {
+	        int elem;
+	        cin>>elem;
+	        arr.push_back(elem);
+	    }
+	    cout<<findLis(arr)<<endl;
+	    arr.clear();
+	}
+	return 0;
+}
