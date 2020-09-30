@@ -1,0 +1,21 @@
+
+//https://www.geeksforgeeks.org/maximize-sum-selected-numbers-performing-following-operation/
+#include <iostream>
+using namespace std;
+
+int maxSum(int arr[], int idx, int a1, int a2) {
+    if(idx < 0)
+        return 0;
+    if(arr[idx] == a1 || arr[idx] == a2)
+        return maxSum(arr, idx-1, a1, a2);
+    return std::max(arr[idx]+maxSum(arr, idx-1, arr[idx]-1, arr[idx]+1),
+                              maxSum(arr, idx-1, a1, a2));
+}
+int main() {
+	//int a[] = {1,2,3};
+	//int a[] = {1, 2, 2, 2, 3, 4};
+	//int a[] = {1,1,1,1,2,3,4};
+	int a[] = {1,2,2,2,3,3,4};
+	cout<<maxSum(a, 6, 0, 0);
+	return 0;
+}
