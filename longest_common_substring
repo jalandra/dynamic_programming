@@ -1,0 +1,31 @@
+//https://www.geeksforgeeks.org/longest-common-substring-dp-29/
+#include<iostream>
+#include<string>
+using namespace std;
+// Driver code 
+
+int lcs(string &X, string &Y, int x, int y) {
+    if(x<0 || y<0) {
+        return 0;
+    }
+    if(X[x] == Y[y]) {
+        return 1+lcs(X,Y,x-1,y-1);
+    }
+    else {
+        return max(lcs(X,Y,x-1,y), lcs(X,Y,x,y-1));
+    }
+}
+int main() 
+{ 
+  int n,m; 
+  
+  string X = "abcdxyz";  
+  string Y = "xyzabcd"; 
+  
+  n = X.size(); 
+  m = Y.size(); 
+  
+  cout<<lcs(X,Y,n-1,m-1); 
+  
+  return 0; 
+}
