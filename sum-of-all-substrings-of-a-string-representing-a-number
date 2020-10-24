@@ -1,0 +1,19 @@
+https://www.geeksforgeeks.org/sum-of-all-substrings-of-a-string-representing-a-number/
+int calculateSumImpl(string str, int currLen, int len, int idx) {
+  if(currLen == len) {
+    return calculateDigitSum(str);
+  }
+  if(idx < 0){
+    return 0;
+  }
+  return calculateSumImpl(str, ++currLen, len, --idx, substr.push_front(str[idx])) + calculateSumImpl(str, currLen, len, --idx, substr.push_front(str[idx]));
+  
+}
+int calculateSum(string str) {
+  int len = str.length();
+  for(int i=0; i<len; i++) {
+    string substr;
+    calculateSumImpl(str, 0, i, idx, substr);
+    substr.clear();
+  }
+}
