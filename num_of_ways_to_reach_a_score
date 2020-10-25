@@ -1,0 +1,29 @@
+//Count number of ways to reach a given score in a game
+#include<iostream>
+#include<vector>
+using namespace std;
+int calculateSum(int n, vector<int> &v, int idx) {
+ // cout<<"v: "<<v[idx]<<" "<<n<<endl;
+  if(n < 0 || idx<0) {
+    return 0;
+  }
+  if(n == 0) {
+    return 1;
+  }
+  return calculateSum(n-v[idx], v, idx) + calculateSum(n, v, --idx);
+}
+
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	int n;
+	vector<int> v{3,5,10};
+	while(t--) {
+	  cin>>n;
+	  cout<<calculateSum(n,v,2)<<endl;
+	  //v.clear();
+	}
+	return 0;
+}
