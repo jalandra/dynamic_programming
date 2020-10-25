@@ -1,0 +1,28 @@
+//Exercise: How to count score when (10, 5, 5), (5, 5, 10) and (5, 10, 5) are considered as different sequences of moves. Similarly, (5, 3, 3), (3, 5, 3) and (3, 3, 5) are considered different.
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int calculateSum(int n) {
+ // cout<<"v: "<<v[idx]<<" "<<n<<endl;
+  if(n < 0) {
+    return 0;
+  }
+  if(n == 0) {
+    return 1;
+  }
+  return calculateSum(n-3) + calculateSum(n-5) + calculateSum(n-10);
+}
+
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	int n;
+	while(t--) {
+	  cin>>n;
+	  cout<<calculateSum(n)<<endl;
+	}
+	return 0;
+}
