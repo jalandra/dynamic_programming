@@ -1,4 +1,4 @@
-//Count number of ways to reach a given score in a game
+//Count number of ways to reach a given score in a game such that the combination is unique like 5,3 and 3,5 are same
 #include<iostream>
 #include<vector>
 using namespace std;
